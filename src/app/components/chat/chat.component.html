@@ -1,0 +1,57 @@
+<div class="chat__item">
+    <div class="chat__item-header" nz-row>
+        <div nz-col nzSpan="3">
+            <img class="chat__item-header--avatar" *ngIf="friend?.avatar" [src]="friend?.avatar" alt="avatar">
+            <img class="chat__item-header--avatar" *ngIf="!friend?.avatar" src="http://via.placeholder.com/30x30"
+                alt="avatar">
+        </div>
+        <div class="chat__item-header--2" nz-col nzSpan="14">
+            <h6>{{ formatFullName(friend?.firstName, friend?.lastName, 10) }}</h6>
+            <p>Đang hoạt động</p>
+        </div>
+        <div class="chat__item-header--3" nz-col nzSpan="7">
+            <fa-icon [icon]="['fas', 'phone']"></fa-icon>
+            <fa-icon [icon]="['fas', 'video']" (click)="handleOpenVideoCall()"></fa-icon>
+            <fa-icon [icon]="['fas', 'minus']" (click)="minimizeChat(friend)"></fa-icon>
+            <fa-icon [icon]="['fas', 'xmark']" (click)="closeChat(friend)"></fa-icon>
+        </div>
+        <nz-modal [(nzVisible)]="showVideoCall" nzTitle="Video" (nzOnCancel)="handleCloseVideoCall()" nzWidth="1000px">
+            <div *nzModalContent>
+                <span>ChatId: {{ peerIdShare }}</span>
+                <input type="text" placeholder="Peer Id" [(ngModel)]='peerIdShare' />
+                <button (click)="connectWithPeer()">Connect</button>
+                <button (click)="shareScreen()">Share</button>
+                <div class="video__wrap">
+                    <div style="width: 600px; height: 600px; border: 2px solid" #remoteVideo></div>
+                </div>
+
+                <br>
+            </div>
+            <div *nzModalFooter>
+            </div>
+        </nz-modal>
+    </div>
+
+    <div class="chat__item-body" #chatBody [scrollTop]="scrollTop">
+        <div *ngFor="let mes of messages" [style.justify-content]="alignLeft(mes.sender.id)">
+            <img class="chat__item-body-content--avatar" *ngIf="mes?.sender?.avatar && !(mes.sender.id == userId)"
+                [src]="mes?.sender?.avatar" alt="ava">
+            <img class="chat__item-body-content--avatar" *ngIf="!mes?.sender?.avatar && !(mes.sender.id == userId)"
+                src="http://via.placeholder.com/30x30" alt="avatar">
+            <p class="chat__item-body-content--send" *ngIf="mes.sender.id === userId">{{ mes.content }}</p>
+            <p class="chat__item-body-content--receive" *ngIf="!(mes.sender.id === userId)">{{ mes.content }}</p>
+        </div>
+    </div>
+
+    <div class="chat__item-bottom" nz-row>
+        <div class="chat__item-bottom--1" nz-col nzSpan="3">
+            <fa-icon [icon]="['fas', 'circle-plus']"></fa-icon>
+        </div>
+        <div class="chat__item-bottom--2" nz-col nzSpan="18">
+            <input [(ngModel)]="input" (keydown.enter)="sendMessage()" />
+        </div>
+        <div class="chat__item-bottom--3" nz-col nzSpan="3" (click)="sendMessage()">
+            <fa-icon [icon]="['fas', 'paper-plane']"></fa-icon>
+        </div>
+    </div>
+</div>

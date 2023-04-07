@@ -1,0 +1,11 @@
+.container__wrap {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.body {
+    background-color: rgb(233, 233, 233);
+    flex: 1;
+    font-size: 20px;
+}

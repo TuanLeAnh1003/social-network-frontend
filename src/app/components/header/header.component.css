@@ -1,0 +1,142 @@
+.header {
+    padding: 10px 20px;
+}
+
+.header > div {
+    display: flex;
+    justify-content: space-between;
+}
+
+.flex {
+    display: flex;
+    align-items: center;
+}
+
+.header__logo {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.header__search {
+    border-radius: 10px;
+    background-color: rgb(231, 231, 231);
+    border: none;
+    padding: 5px 10px;
+}
+
+.header__avatar-wrap {
+    display: flex;
+    align-items: center;
+}
+
+.header__avatar-wrap:hover {
+    cursor: pointer;
+    opacity: 80%;
+}
+
+.header__avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.header__name {
+    font-size: 20px;
+    margin-bottom: 0;
+}
+
+.header__function {
+    font-size: 24px;
+    width: 130px;
+    justify-content: space-between;
+    margin-left: 30px;
+}
+
+.header__function-wrap {
+    background-color: rgb(230, 230, 230);
+    border-radius: 50%;
+    width: 38px;
+    height: 38px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.header__column-1 {
+    display: flex;
+    align-items: center;
+}
+
+.header__column-2 {
+    display: flex;
+    justify-content: center;
+}
+
+.header__column-2 > ul {
+    width: 100%;
+    display: flex;
+    font-size: 24px;
+    justify-content: space-between;
+}
+
+.header__column-3 {
+    display: flex;
+    justify-content: right;
+}
+
+.header__column-1--wrap {
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+}
+
+.header__column-1--name {
+    margin-bottom: 0;
+    width: 75%;
+
+}
+
+.header__column-1--avatar {
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    margin-right: 5px;
+}
+
+.header__messages-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+    width: 300px;
+}
+
+.header__messages-item > img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 20px;
+}
+
+.header__messages-item > div {
+    flex: 1;
+}
+
+.header__messages-item > div > h4 {
+    margin-bottom: 0;
+}
+
+.header__messages-item > div > p {
+    margin-bottom: 0;
+}
+
+.header__messages-item > div > h4 {
+    font-size: 14px;
+}
+
+.header__messages-item > fa-icon {
+    font-size: 10px;
+}

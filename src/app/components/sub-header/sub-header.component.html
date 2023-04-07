@@ -1,0 +1,39 @@
+<div class="header">
+    <div nz-row>
+        <div class="header__column-1" nz-col nzSpan="12">
+            <a routerLink="/home/first-page">
+                <img class="header__logo" src="../../../assets/imgs/logo.png" alt="logo">
+            </a>
+            <form [formGroup]="searchForm">
+                <input class="header__search" type="text" placeholder="Search" formControlName="search" [nzAutocomplete]="auto" nz-input />
+            </form>
+            <nz-autocomplete nzBackfill #auto>
+                <nz-auto-option class="header__column-1--wrap" *ngFor="let option of searchList" [nzValue]="option" (click)="handleClickPersonel(option.id)">
+                    <img class="header__column-1--avatar" *ngIf="option?.avatar" [src]="option?.avatar" alt="avatar">
+                    <img class="header__column-1--avatar" *ngIf="!option?.avatar" src="http://via.placeholder.com/20x20" alt="avatar">
+                    <p class="header__column-1--name">
+                        {{ option.firstName }} {{ option.lastName }}
+                    </p>
+                </nz-auto-option>
+            </nz-autocomplete>
+        </div>
+        <div class="header__column-3" nz-col nzSpan="12">
+            <div class="header__avatar-wrap">
+                <img class="header__avatar" *ngIf="user?.avatar" [src]="user?.avatar" alt="avatar">
+                <img class="header__avatar" *ngIf="!user?.avatar" src="http://via.placeholder.com/50x50">
+                <p class="header__name">Thien</p>
+            </div>
+            <div class="flex header__function">
+                <div class="header__function-wrap">
+                    <fa-icon [icon]="['fab', 'facebook-messenger']"></fa-icon>
+                </div>
+                <div class="header__function-wrap">
+                    <fa-icon [icon]="['far', 'bell']"></fa-icon>
+                </div>
+                <div class="header__function-wrap">
+                    <fa-icon [icon]="['fas', 'angle-down']"></fa-icon>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

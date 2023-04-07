@@ -1,0 +1,333 @@
+.fp__post {
+    background-color: white;
+    margin-top: 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.fp__post-header {
+    padding: 10px 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.fp__post-header--avatar {
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+}
+
+.fp__post-header--name {
+    margin-left: 10px;
+    flex: 1;
+}
+
+.fp__post-header--name>h3 {
+    font-size: 20px;
+    margin-bottom: 0;
+}
+
+.fp__post-header--name>p {
+    margin-bottom: 0;
+    font-size: 16px;
+}
+
+.fp__post-header--function {
+    margin-right: 20px;
+    cursor: pointer;
+}
+
+.fp__post-header--function:hover {
+    opacity: 50%;
+}
+
+.fp__post-body {
+    padding: 10px 15px;
+
+}
+
+.fp__post-images {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.fp__post-images>div {
+    width: 100%;
+}
+
+.fp__post-image-1 {
+    display: flex;
+    justify-content: center;
+}
+
+.fp__post-image-1>img {
+    max-height: 600px;
+    max-width: 100%;
+}
+
+.fp__post-image-1>video {
+    max-height: 600px;
+    max-width: 100%;
+}
+
+.fp__post-image-2 {
+    display: flex;
+    max-width: 49.7%;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.fp__post-image-2>img {
+    width: 100%;
+    height: fit-content;
+}
+
+.fp__post-image-2>video {
+    width: 100%;
+    height: fit-content;
+}
+
+.fp__post-image-3 {
+    display: flex;
+    max-width: 49.7%;
+    justify-content: space-between;
+}
+
+.fp__post-image-3>img {
+    width: 100%;
+    max-height: 300px;
+    margin-bottom: 5px;
+}
+
+.fp__post-image-3>video {
+    width: 100%;
+    max-height: 300px;
+    margin-bottom: 5px;
+}
+
+.fp__post-image-4 {
+    display: flex;
+    max-width: 49.7%;
+    justify-content: space-between;
+}
+
+.fp__post-image-4>img {
+    width: 100%;
+    max-height: 300px;
+    margin-bottom: 5px;
+}
+
+.fp__post-image-4>video {
+    width: 100%;
+    max-height: 300px;
+    margin-bottom: 5px;
+}
+
+.fp__post-image-5-0,
+.fp__post-image-5-1,
+.fp__post-image-5-2,
+.fp__post-image-5-3 {
+    display: flex;
+    max-width: 49.7%;
+    justify-content: space-between;
+}
+
+.fp__post-image-5-0>img,
+.fp__post-image-5-1>img,
+.fp__post-image-5-2>img {
+    width: 100%;
+    max-height: 300px;
+    margin-bottom: 5px;
+}
+
+.fp__post-image-5-0>video,
+.fp__post-image-5-1>video,
+.fp__post-image-5-2>video {
+    width: 100%;
+    max-height: 300px;
+    margin-bottom: 5px;
+}
+
+.fp__post-image-5-3 {
+    position: relative;
+}
+
+.fp__post-image-5-3>img {
+    width: 100%;
+    max-height: 300px;
+    margin-bottom: 5px;
+}
+
+.fp__post-image-5-3>video {
+    width: 100%;
+    max-height: 300px;
+    margin-bottom: 5px;
+}
+
+.fp__post-image-5-3>div {
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.5);
+    bottom: 0;
+    right: 0;
+    top: 0;
+    left: 0;
+    margin-bottom: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.fp__post-image-5-3>div>button {
+    color: white;
+    font-size: 30px;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+
+.fp__post-image-5-3>div>button:hover {
+    opacity: 80%;
+}
+
+.fp__post-image-5-4 {
+    display: none;
+}
+
+.fp__post--function {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 10px 0;
+}
+
+.fp__post--function-item {
+    background-color: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+
+.fp__post--function-item>div>span {
+    margin-left: 5px;
+}
+
+.fp__post--function-item>span {
+    margin-left: 5px;
+}
+
+.fp__post--function-item-liked {
+    color: #007bff
+}
+
+.fp__post--function-item-haha {
+    color: yellow
+}
+
+.fp__post--function-item-wow {
+    color: yellow
+}
+
+.fp__post--function-item-sad {
+    color: yellow
+}
+
+.fp__post--function-item-heart {
+    color: red
+}
+
+.fp__post--function-item-angry {
+    color: orange
+}
+
+.fb__post-my-comment {
+    padding: 20px 20px;
+    display: flex;
+}
+
+.fb__post-my-comment-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.fb__post-my-comment-item--2 {
+    flex: 1;
+}
+
+.fb__post-my-comment-item--2>input {
+    width: 100%;
+}
+
+.fp__post--react {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 20px;
+}
+
+.fp__post--react-1 {
+    display: flex;
+    align-items: center;
+}
+
+.fp__post--react-1>img {
+    height: 20px;
+    margin-right: 5px;
+}
+
+.fp__post--react-1>video {
+    height: 20px;
+    margin-right: 5px;
+}
+
+.fp__post--react-2 {
+    display: flex;
+    align-items: center;
+}
+
+.fp__post--react-2>fa-icon {
+    font-size: 5px;
+    padding-top: 5px;
+}
+
+.fp__post--react-2>p {
+    margin-bottom: 0;
+    margin-left: 10px;
+}
+
+.fp__post--react-2>span {
+    margin-left: 5px;
+    margin-right: 10px;
+}
+
+.fp__post--function-react {
+    display: flex;
+    align-items: center;
+}
+
+.fp__post--function-react>img {
+    width: 30px;
+    height: 30px;
+    margin: 0 5px;
+    transition: transform .2s;
+    cursor: pointer;
+}
+
+.fp__post--function-react>img:hover {
+    transform: scale(1.5);
+    opacity: 0.8;
+}
+
+.ant-popover-inner-content {
+    border-radius: 20px;
+}
+
+.fp__post-share {
+    border: 1px solid #000;
+    margin: 0 20px;
+    border-radius: 20px;
+    margin-bottom: 20px;
+}

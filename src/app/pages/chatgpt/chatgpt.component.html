@@ -1,0 +1,25 @@
+<div class="container__wrap">
+    <div class="body">
+        <div style="margin: 30px;">
+            <h1 style="text-align: center;">Chat with ChatGPT </h1>
+            <div class="chatgpt">
+                <div class="chatgpt__body" #chatBody>
+                    <div *ngFor="let message of messageList">
+                        <div *ngIf="message.sender === 'me'" class="chatgpt__body-item-me">
+                            <p>{{ message.message }}</p>
+                            <img src="http://via.placeholder.com/50x50" alt="avatar">
+                        </div>
+                        <div *ngIf="message.sender === 'gpt'" class="chatgpt__body-item-gpt">
+                            <img src="../../../assets/imgs/chatgpt-icon.jpg" alt="avatar">
+                            <p>{{ message.message }}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="chatgpt__body-input">
+                    <input type="text" [(ngModel)]="input" (keydown.enter)="generateText()">
+                    <button (click)="generateText()">Send</button>
+                </div>
+            </div>
+          </div>
+    </div>
+</div>

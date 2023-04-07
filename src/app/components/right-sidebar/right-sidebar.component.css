@@ -1,0 +1,72 @@
+.right-sidebar {
+    padding: 20px 40px;
+}
+
+.right-sidebar__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.right-sidebar__body {
+    flex: 1;
+}
+
+.right-sidebar__body-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+.right-sidebar__body-item:hover {
+    opacity: 0.8;
+    background-color: rgb(221, 221, 221);
+}
+
+.right-sidebar__body-item > img {
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+}
+
+.right-sidebar__body-item > p {
+    margin-bottom: 0;
+    margin-left: 5px;
+}
+
+.chat__popup-item {
+    margin-bottom: 20px;
+    cursor: pointer;
+    transition: transform .2s;
+}
+
+.chat__popup-item:hover {
+    transform: scale(1.5);
+}
+
+.chat__popup-item--avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+.chat__container {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+}
+
+.chat__frame {
+    display: flex;
+    align-items: center;
+    justify-content: end;
+}
+
+.chat__popup {
+    width: 80px;
+    /* height: 80px; */
+}

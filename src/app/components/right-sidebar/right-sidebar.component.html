@@ -1,0 +1,28 @@
+<div class="right-sidebar">
+    <div class="right-sidebar__header">
+        <h4>Contacts</h4>
+        <div>
+            <fa-icon [icon]="['fas', 'magnifying-glass']"></fa-icon>
+            <fa-icon [icon]="['fas', 'ellipsis']"></fa-icon>
+        </div>
+    </div>
+    <div class="right-sidebar__body">
+        <div class="right-sidebar__body-item" *ngFor="let friend of friendList" (click)="handleClickFriend(friend)">
+            <img class="right-sidebar__body-item-image" *ngIf="friend.avatar" [src]="friend.avatar" alt="avatar">
+            <img class="right-sidebar__body-item-image" *ngIf="!friend.avatar" src="http://via.placeholder.com/50x50"
+                alt="avatar">
+            <p>{{friend.lastName}} {{friend.firstName}}</p>
+        </div>
+    </div>
+    <div class="chat__container">
+        <div class="chat__frame">
+            <app-chat *ngFor="let friend of chatOpening" [friend]="friend" (minimizeEvent)="minimizeChat($event)" (closeEvent)="closeChat($event)"></app-chat>
+        </div>
+        <div class="chat__popup">
+            <div class="chat__popup-item" *ngFor="let friend of chatPopup">
+                <img class="chat__popup-item--avatar" *ngIf="friend.avatar" [src]="friend.avatar" alt="avatar" (click)="handleClickPopup(friend)">
+                <img class="chat__popup-item--avatar" *ngIf="!friend.avatar" src="http://via.placeholder.com/50x50" (click)="handleClickPopup(friend)">
+            </div>
+        </div>
+    </div>
+</div>

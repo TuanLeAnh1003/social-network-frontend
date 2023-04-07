@@ -1,0 +1,137 @@
+.chat__item {
+    height: 500px;
+    width: 350px;
+    background-color: white;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    /* width: 100%; */
+}
+
+.chat__item-header {
+    height: 50px;
+    width: 100%;
+    border-bottom: 1px solid #000;
+    padding: 5px 10px;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+}
+
+.chat__item-header--2 > h6,
+.chat__item-header--2 > p {
+    margin-bottom: 0;
+}
+
+.chat__item-header--2 > p {
+    font-size: 12px;
+}
+
+.chat__item-header--3 > fa-icon {
+    margin-left: 3px;
+    cursor: pointer;
+}
+
+.chat__item-header--3 > fa-icon:hover {
+    opacity: 50%;
+}
+
+.chat__item-header--avatar {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+}
+
+.chat__item-body {
+    flex: 1;
+    overflow-y: scroll;
+}
+
+.chat__item-body > div {
+    margin-bottom: 5px;
+}
+
+.chat__item-bottom {
+    height: 50px;
+    display: flex;
+    align-items: center;
+}
+
+.chat__item-bottom--1 {
+    display: flex;
+    justify-content: center;
+}
+
+.chat__item-bottom--2 {
+    display: flex;
+    flex: 1;
+    justify-content: center;
+    align-items: center;
+}
+
+.chat__item-bottom--2 > input {
+    height: 30px;
+    font-size: 14px;
+    width: 100%;
+
+}
+
+.chat__item-bottom--3 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.chat__item-body {
+    padding: 10px 20px;
+}
+
+.chat__item-body > div {
+    display: flex;
+    align-items: center;
+}
+
+.chat__item-body-content--avatar {
+    border-radius: 50%;
+    margin-right: 10px;
+    width: 35px;
+    height: 35px;
+}
+
+.chat__item-body-content--send {
+    border-radius: 15px;
+    background-color: rgb(0, 73, 207);
+    color: rgb(255, 255, 255);
+    margin-bottom: 0;
+    padding: 5px 10px;
+    max-width: 80%;
+    word-wrap: break-word
+}
+
+.chat__item-body-content--receive {
+    border-radius: 15px;
+    background-color: rgb(216, 216, 216);
+    color: black;
+    margin-bottom: 0;
+    padding: 5px 10px;
+    max-width: 80%;
+    word-wrap: break-word
+}
+
+.ant-modal {
+    width: 1000px;
+}
+
+.video__wrap {
+    display: flex;
+    justify-content: center;
+}
+
+.video {
+    width: 100% !important;
+}
+
+.video__wrap > div > video {
+    width: 100%;
+}

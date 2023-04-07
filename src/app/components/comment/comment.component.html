@@ -1,0 +1,79 @@
+<div>
+    <nz-comment [nzAuthor]="formatFullName(comment.user.firstName, comment.user.lastName, 10)"
+        [nzDatetime]="formatDate(comment.createdAt)">
+        <nz-avatar nz-comment-avatar nzIcon="user" [nzSrc]="comment.user.avatar"></nz-avatar>
+        <nz-comment-content>
+            <p>
+                {{ comment.content }}
+            </p>
+        </nz-comment-content>
+        <nz-comment-action>
+            <button class="fp__post--function-item" (click)="like(reactType.LIKE)" nz-popover
+                [nzPopoverContent]="contentTemplate">
+                <div *ngIf="isMyLike === 'LIKE'" class="fp__post--function-item-liked">
+                    <fa-icon [icon]="['fas', 'thumbs-up']"></fa-icon>
+                </div>
+                <div *ngIf="isMyLike === 'HAHA'" class="fp__post--function-item-haha">
+                    <fa-icon [icon]="['far', 'face-laugh-squint']"></fa-icon>
+                </div>
+                <div *ngIf="isMyLike === 'WOW'" class="fp__post--function-item-wow">
+                    <fa-icon [icon]="['far', 'face-surprise']"></fa-icon>
+                </div>
+                <div *ngIf="isMyLike === 'SAD'" class="fp__post--function-item-sad">
+                    <fa-icon [icon]="['far', 'face-frown']"></fa-icon>
+                </div>
+                <div *ngIf="isMyLike === 'HEART'" class="fp__post--function-item-heart">
+                    <fa-icon [icon]="['far', 'heart']"></fa-icon>
+                </div>
+                <div *ngIf="isMyLike === 'ANGRY'" class="fp__post--function-item-angry">
+                    <fa-icon [icon]="['far', 'face-angry']"></fa-icon>
+                </div>
+                <div *ngIf="isMyLike === ''">
+                    <fa-icon [icon]="['far', 'thumbs-up']"></fa-icon>
+                </div>
+            </button>
+            <ng-template #contentTemplate>
+                <div class="fp__post--function-react">
+                    <img src="../../../assets/imgs/like-icon.jpg" (click)="changeLike(reactType.LIKE)" />
+                    <img src="../../../assets/imgs/haha-icon.jpg" (click)="changeLike(reactType.HAHA)" />
+                    <img src="../../../assets/imgs/heart-icon.jpg" (click)="changeLike(reactType.HEART)" />
+                    <img src="../../../assets/imgs/sad-icon.jpg" (click)="changeLike(reactType.SAD)" />
+                    <img src="../../../assets/imgs/wow-icon.jpg" (click)="changeLike(reactType.WOW)" />
+                    <img src="../../../assets/imgs/angry-icon.jpg" (click)="changeLike(reactType.ANGRY)" />
+                </div>
+            </ng-template>
+            <span class="count like">{{ likes }}</span>
+            <ng-template #contentTemplate>
+                <div class="fp__post--function-react">
+                    <img src="../../../assets/imgs/like-icon.jpg" (click)="changeLike(reactType.LIKE)" />
+                    <img src="../../../assets/imgs/haha-icon.jpg" (click)="changeLike(reactType.HAHA)" />
+                    <img src="../../../assets/imgs/heart-icon.jpg" (click)="changeLike(reactType.HEART)" />
+                    <img src="../../../assets/imgs/sad-icon.jpg" (click)="changeLike(reactType.SAD)" />
+                    <img src="../../../assets/imgs/wow-icon.jpg" (click)="changeLike(reactType.WOW)" />
+                    <img src="../../../assets/imgs/angry-icon.jpg" (click)="changeLike(reactType.ANGRY)" />
+                </div>
+            </ng-template>
+        </nz-comment-action>
+        <nz-comment-action>
+            <span nz-tooltip nzTitle="Reply" (click)="handleClickReply()">
+                Reply to
+            </span>
+
+        </nz-comment-action>
+    </nz-comment>
+    <div style="padding-left: 40px;">
+        <app-comment *ngFor="let comment of subCommentList" [comment]="comment" [user]="user">
+        </app-comment>
+        <div class="fb_post-sub_comment" *ngIf="isReply" nz-row>
+            <div class="" nz-col nzSpan="2">
+                <nz-avatar nzIcon="user" [nzSrc]="user.avatar"></nz-avatar>
+            </div>
+            <div class="fb_post-sub_comment--2" nz-col nzSpan="19">
+                <input [(ngModel)]="replyInput" (keydown.enter)="handleSubmitReply()" />
+            </div>
+            <div class="" nz-col nzSpan="3" (click)="handleSubmitReply()">
+                <fa-icon [icon]="['fas', 'paper-plane']"></fa-icon>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,103 @@
+<div *ngIf="isLogined" class="header">
+    <div nz-row>
+        <div class="header__column-1" nz-col nzSpan="8">
+            <a [routerLink]="['/home/first-page']">
+                <img class="header__logo" src="../../../assets/imgs/logo.png" alt="logo">
+            </a>
+            <form [formGroup]="searchForm">
+                <input class="header__search" type="text" placeholder="Search" formControlName="search"
+                    [nzAutocomplete]="auto" nz-input />
+            </form>
+            <nz-autocomplete nzBackfill #auto>
+                <nz-auto-option class="header__column-1--wrap" *ngFor="let option of searchList" [nzValue]="option"
+                    (click)="handleClickPersonel(option.id)">
+                    <div style="display: flex">
+                        <img class="header__column-1--avatar" *ngIf="option?.avatar" [src]="option?.avatar"
+                            alt="avatar">
+                        <img class="header__column-1--avatar" *ngIf="!option?.avatar"
+                            src="http://via.placeholder.com/20x20" alt="avatar">
+                        <p class="header__column-1--name">
+                            {{ formatFullName(option.firstName, option.lastName, 10) }}
+                        </p>
+                    </div>
+                </nz-auto-option>
+            </nz-autocomplete>
+        </div>
+        <div *ngIf="isShowFunction" class="header__column-2" nz-col nzSpan="12">
+            <ul nz-menu nzMode="horizontal">
+                <li nz-menu-item nzSelected>
+                    <a routerLink="/home/first-page">
+                        <fa-icon [icon]="['fas', 'house']"></fa-icon>
+                    </a>
+                </li>
+                <li nz-menu-item>
+                    <a routerLink="/home/reel">
+                        <fa-icon [icon]="['fas', 'photo-film']"></fa-icon>
+                    </a>
+                </li>
+                <li nz-menu-item>
+                    <fa-icon [icon]="['fas', 'house']"></fa-icon>
+                </li>
+                <li nz-menu-item>
+                    <fa-icon [icon]="['fas', 'house']"></fa-icon>
+                </li>
+                <li nz-menu-item>
+                    <fa-icon [icon]="['fas', 'house']"></fa-icon>
+                </li>
+            </ul>
+        </div>
+        <div class="header__column-3" nz-col nzSpan="4">
+            <div class="header__avatar-wrap" (click)="handleClickUser()">
+                <img class="header__avatar" *ngIf="user?.avatar" [src]="user?.avatar" alt="avatar">
+                <img class="header__avatar" *ngIf="!user?.avatar" src="http://via.placeholder.com/50x50">
+                <p class="header__name">{{ user?.firstName }}</p>
+            </div>
+            <div class="flex header__function">
+                <nz-badge [nzCount]="countNewMessage">
+                    <div class="header__function-wrap" nz-dropdown nzTrigger="click" [nzDropdownMenu]="menu"
+                        nzPlacement="bottomRight">
+                        <fa-icon [icon]="['fab', 'facebook-messenger']"></fa-icon>
+                    </div>
+                    <nz-dropdown-menu #menu="nzDropdownMenu">
+                        <ul nz-menu>
+                            <li class="header__messages-item" *ngFor="let friend of friendList" nz-menu-item
+                                (click)="handleClickFriend(friend)">
+                                <img *ngIf="friend?.avatar" [src]="friend.avatar" alt="avatar">
+                                <img *ngIf="!friend?.avatar" src="http://via.placeholder.com/40x40">
+                                <div>
+                                    <h4>{{ formatFullName(friend.firstName, friend.lastName, 10) }}</h4>
+                                    <p [style]="isSeen(friend.unSeen)">Last message</p>
+                                </div>
+                                <fa-icon [style]="isSeen(friend.unSeen)" [icon]="['fas', 'circle']"></fa-icon>
+                            </li>
+                        </ul>
+                    </nz-dropdown-menu>
+                </nz-badge>
+                <nz-badge [nzCount]="countNewNoti" nz-dropdown nzTrigger="click" [nzDropdownMenu]="noti"
+                nzPlacement="bottomRight">
+                    <div class="header__function-wrap">
+                        <fa-icon [icon]="['far', 'bell']"></fa-icon>
+                    </div>
+                    <nz-dropdown-menu #noti="nzDropdownMenu">
+                        <ul nz-menu>
+                            <li nz-menu-item (click)="logout()">
+                                <p style="margin-bottom: 0;">New noti</p>
+                            </li>
+                        </ul>
+                    </nz-dropdown-menu>
+                </nz-badge>
+                <div class="header__function-wrap" nz-dropdown nzTrigger="click" [nzDropdownMenu]="more"
+                    nzPlacement="bottomRight">
+                    <fa-icon [icon]="['fas', 'angle-down']"></fa-icon>
+                </div>
+                <nz-dropdown-menu #more="nzDropdownMenu">
+                    <ul nz-menu>
+                        <li nz-menu-item (click)="logout()">
+                            <p style="margin-bottom: 0;">Logout</p>
+                        </li>
+                    </ul>
+                </nz-dropdown-menu>
+            </div>
+        </div>
+    </div>
+</div>

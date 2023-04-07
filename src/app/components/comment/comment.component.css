@@ -1,0 +1,76 @@
+.count {
+    padding-left: 8px;
+    cursor: auto;
+}
+
+.ant-comment-rtl .count {
+    padding-right: 8px;
+    padding-left: 0;
+}
+
+.ant-comment {
+    padding: 0 20px;
+}
+
+.fb_post-sub_comment {
+    padding: 0 20px;
+}
+
+.fb_post-sub_comment--2 {
+    flex: 1;
+    padding-right: 10px;
+    margin-bottom: 10px;
+}
+
+.fb_post-sub_comment--2 > input {
+    width: 100%;
+}
+
+.fp__post--function-react {
+    display: flex;
+    align-items: center;
+}
+
+.fp__post--function-react > img {
+    width: 30px;
+    height: 30px;
+    margin: 0 5px;
+    transition: transform .2s;
+    cursor: pointer;
+}
+
+.fp__post--function-react > img:hover {
+    transform: scale(1.5);
+    opacity: 0.8;
+}
+
+.fp__post--function-item {
+    background-color: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+
+.fp__post--function-item-liked {
+    color: #007bff
+}
+
+.fp__post--function-item-haha {
+    color: yellow
+}
+
+.fp__post--function-item-wow {
+    color: yellow
+}
+
+.fp__post--function-item-sad {
+    color: yellow
+}
+
+.fp__post--function-item-heart {
+    color: red
+}
+
+.fp__post--function-item-angry {
+    color: orange
+}

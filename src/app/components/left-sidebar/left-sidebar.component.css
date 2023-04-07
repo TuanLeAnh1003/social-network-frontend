@@ -1,0 +1,22 @@
+.left-sidebar__item {
+    display: flex;
+    padding: 10px 20px;
+    align-items: center;
+}
+
+.left-sidebar__item:hover {
+    cursor: pointer;
+    background-color: rgb(201, 201, 201);
+}
+
+.left-sidebar__item > img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+.left-sidebar__item > p {
+    margin-bottom: 0;
+    margin-left: 10px;
+    font-size: 20px;
+}

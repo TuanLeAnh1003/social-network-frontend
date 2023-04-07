@@ -1,0 +1,15 @@
+<div class="container__wrap">
+    <app-header [user]="user" [chatOpening]="chatOpening" [chatPopup]="chatPopup" isShowFunction="true"></app-header>
+
+    <div class="body" nz-row>
+        <div nz-col nzSpan="6">
+            <app-left-sidebar [user]="user"></app-left-sidebar>
+        </div>
+        <div nz-col nzSpan="12">
+            <router-outlet></router-outlet>
+        </div>
+        <div nz-col nzSpan="6">
+            <app-right-sidebar [user]="user" [chatOpening]="chatOpening" [chatPopup]="chatPopup"></app-right-sidebar>
+        </div>
+    </div>
+</div>

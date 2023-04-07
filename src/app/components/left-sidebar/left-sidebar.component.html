@@ -1,0 +1,11 @@
+<div>
+    <div class="left-sidebar__item" (click)="handleClickUser()">
+        <img class="" *ngIf="user?.avatar" [src]="user?.avatar" alt="avatar">
+        <img class="" *ngIf="!user?.avatar" src="http://via.placeholder.com/50x50">
+        <p>{{ user?.firstName }}</p>
+    </div>
+    <div class="left-sidebar__item" (click)="handleClickChatGpt()">
+        <img src="../../../assets/imgs/chatgpt-icon.jpg" alt="chatgpt-icon">
+        <p>Chat with ChatGPT</p>
+    </div>
+</div>

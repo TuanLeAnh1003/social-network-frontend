@@ -1,0 +1,142 @@
+<div class="fp__post-header">
+    <img class="fp__post-header--avatar" *ngIf="post.owner.avatar" [src]="post.owner.avatar" alt="avatar">
+    <img class="fp__post-header--avatar" *ngIf="!post.owner.avatar" src="http://via.placeholder.com/50x50" alt="avatar">
+    <div class="fp__post-header--name">
+        <h3>{{post.owner.firstName}} {{post.owner.lastName}}</h3>
+        <p>{{post.createdAt | date}}</p>
+    </div>
+    <div class="fp__post-header--function">
+        <fa-icon nz-dropdown nzTrigger="click" [nzDropdownMenu]="menu" [icon]="['fas', 'ellipsis']"
+            nzPlacement="bottomRight"  *ngIf="!isSharedPost"></fa-icon>
+        <nz-dropdown-menu #menu="nzDropdownMenu">
+            <ul nz-menu>
+                <li *ngIf="checkIsMyPost(user?.id, post.owner.id)" nz-menu-item (click)="handleConfirmDelete(post)">Delete</li>
+            </ul>
+        </nz-dropdown-menu>
+        <nz-modal [(nzVisible)]="isOpenDeleteModal" nzTitle="Delete post" (nzOnCancel)="closeDeleteModal()">
+            <div *nzModalContent>
+                <p>You want to delete this post?</p>
+            </div>
+            <div *nzModalFooter>
+                <button nz-button nzType="default" (click)="closeDeleteModal()">Back</button>
+                <button nz-button nzDanger nzType="primary" (click)="deletePost()"
+                    [nzLoading]="isConfirmDeleteLoading">Delete</button>
+            </div>
+        </nz-modal>
+    </div>
+</div>
+<div class="fp__post-body">
+    <p>{{post.content}}</p>
+</div>
+<div class="fp__post-images">
+    <div *ngFor="let image of listImagesAndVideos; index as currentIndexImage"
+        [class]="setClassName(currentIndexImage, listImagesAndVideos.length)">
+        <img *ngIf="image.type === 'image'" [src]="image.address" alt="img">
+        <video *ngIf="image.type === 'video'" controls>
+            <source [src]="image.address" type="video/mp4">
+          Your browser does not support the video tag.
+          </video>
+        <div *ngIf="listImagesAndVideos.length > 4 && currentIndexImage > 2">
+            <button>+{{post.images.length - 4}}</button>
+        </div>
+    </div>
+</div>
+<div class="fp__post-share" *ngIf="isShared()">
+    <app-post [post]="post.sharePost" [user]="user" [isSharedPost]="convertStringToBoolean('true')"></app-post>
+</div>
+<div *ngIf="!isSharedPost">
+    <div class="fp__post--react">
+        <div class="fp__post--react-1">
+            <img src="../../../assets/imgs/react-icon.png" alt="icon">
+            <span>{{ totalReact }}</span>
+        </div>
+        <div class="fp__post--react-2">
+            <p>{{ totalComment }}</p>
+            <span> comments</span>
+            <fa-icon [icon]="['fas', 'circle']"></fa-icon>
+            <p>{{ totalShare }}</p>
+            <span> shares</span>
+        </div>
+    </div>
+    <div class="fp__post--function">
+        <button class="fp__post--function-item" (click)="like(reactType.LIKE)" nz-popover [nzPopoverContent]="contentTemplate">
+            <div *ngIf="isMyLikePost === 'LIKE'" class="fp__post--function-item-liked">
+                <fa-icon [icon]="['fas', 'thumbs-up']"></fa-icon>
+                <span>Like</span>
+            </div>
+            <div *ngIf="isMyLikePost === 'HAHA'" class="fp__post--function-item-haha">
+                <fa-icon [icon]="['far', 'face-laugh-squint']"></fa-icon>
+                <span>Haha</span>
+            </div>
+            <div *ngIf="isMyLikePost === 'WOW'" class="fp__post--function-item-wow">
+                <fa-icon [icon]="['far', 'face-surprise']"></fa-icon>
+                <span>Wow</span>
+            </div>
+            <div *ngIf="isMyLikePost === 'SAD'" class="fp__post--function-item-sad">
+                <fa-icon [icon]="['far', 'face-frown']"></fa-icon>
+                <span>Sad</span>
+            </div>
+            <div *ngIf="isMyLikePost === 'HEART'" class="fp__post--function-item-heart">
+                <fa-icon [icon]="['far', 'heart']"></fa-icon>
+                <span>Heart</span>
+            </div>
+            <div *ngIf="isMyLikePost === 'ANGRY'" class="fp__post--function-item-angry">
+                <fa-icon [icon]="['far', 'face-angry']"></fa-icon>
+                <span>Angry</span>
+            </div>
+            <div *ngIf="isMyLikePost === ''">
+                <fa-icon [icon]="['far', 'thumbs-up']"></fa-icon>
+                <span>Like</span>
+            </div>
+            <ng-template #contentTemplate>
+                <div class="fp__post--function-react">
+                  <img src="../../../assets/imgs/like-icon.jpg" (click)="changeLike(reactType.LIKE)"/>
+                  <img src="../../../assets/imgs/haha-icon.jpg" (click)="changeLike(reactType.HAHA)"/>
+                  <img src="../../../assets/imgs/heart-icon.jpg" (click)="changeLike(reactType.HEART)"/>
+                  <img src="../../../assets/imgs/sad-icon.jpg" (click)="changeLike(reactType.SAD)"/>
+                  <img src="../../../assets/imgs/wow-icon.jpg" (click)="changeLike(reactType.WOW)"/>
+                  <img src="../../../assets/imgs/angry-icon.jpg" (click)="changeLike(reactType.ANGRY)"/>
+                </div>
+              </ng-template>
+        </button>
+        <button class="fp__post--function-item" (click)="handleClickComment()">
+            <fa-icon [icon]="['fas', 'message']"></fa-icon>
+            <span>Comment</span>
+        </button>
+        <button class="fp__post--function-item" (click)="openShareModal(post.id)">
+            <fa-icon [icon]="['far', 'share-square']"></fa-icon>
+            <span>Share</span>
+            <nz-modal [(nzVisible)]="isOpenShareModal" [nzTitle]="modalTitle" [nzContent]="modalContent"
+                [nzFooter]="modalFooter" (nzOnCancel)="closeShareModal()">
+                <ng-template #modalTitle>Share post</ng-template>
+
+                <ng-template #modalContent>
+                    <textarea style="width: 100%;" [(ngModel)]="shareContent"
+                        placeholder="Share content"></textarea>
+                </ng-template>
+
+                <ng-template #modalFooter>
+                    <button nz-button nzType="default" (click)="closeShareModal()">Back</button>
+                    <button nz-button nzType="primary" (click)="handleSharePost()"
+                        [nzLoading]="isConfirmShareLoading">Share</button>
+                </ng-template>
+            </nz-modal>
+        </button>
+    </div>
+    <div class="fp__post-comments">
+        <div *ngFor="let comment of commentList">
+            <app-comment [comment]="comment" [user]="user"></app-comment>
+        </div>
+    </div>
+    <div class="fb__post-my-comment" *ngIf="isComment" nz-row>
+        <div class="fb__post-my-comment-item" nz-col nzSpan="2">
+            <nz-avatar nzIcon="user" [nzSrc]="user?.avatar"></nz-avatar>
+        </div>
+        <div class="fb__post-my-comment-item--2" nz-col nzSpan="19">
+            <input [(ngModel)]="commentInput" (keydown.enter)="handleSubmitComment()" />
+        </div>
+        <div class="fb__post-my-comment-item" nz-col nzSpan="3" (click)="handleSubmitComment()">
+            <fa-icon [icon]="['fas', 'paper-plane']"></fa-icon>
+        </div>
+    </div>
+</div>
