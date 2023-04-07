@@ -37,9 +37,9 @@ export class ChatComponent {
   scrollTop:number=400;
 
   constructor(private api: ApiService, private auth: AuthService, public socket: SocketService) {
-    const serverUrl = 'http://localhost:8080/socket';
+    // const serverUrl = 'http://localhost:8080/socket';
     // const serverUrl = 'http://192.168.107.48/socket';
-    // const serverUrl = 'https://social-network-backend-c8ew.onrender.com/socket';
+    const serverUrl = 'https://social-network-be.onrender.com/socket';
     const ws = new SockJS(serverUrl);
     this.stompClient = Stomp.over(ws);
 

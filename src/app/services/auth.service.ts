@@ -8,9 +8,9 @@ import { Router } from '@angular/router';
 })
 export class AuthService {
 
-  private baseUrl: string = 'http://localhost:8080/api/'
+  // private baseUrl: string = 'http://localhost:8080/api/'
   // private baseUrl: string = 'http://192.168.107.48:8080/api/'
-  // private baseUrl: string = 'https://social-network-backend-c8ew.onrender.com/api/'
+  private baseUrl: string = 'https://social-network-be.onrender.com/api/'
 
   constructor(private http: HttpClient, private router: Router) { }
 

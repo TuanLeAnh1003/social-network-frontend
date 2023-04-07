@@ -11,9 +11,9 @@ export class SocketService {
   public msg: Array<any> = [];
 
   constructor() {
-    const serverUrl = 'http://localhost:8080/socket';
+    // const serverUrl = 'http://localhost:8080/socket';
     // const serverUrl = 'http://192.168.107.48:8080/socket';
-    // const serverUrl = 'https://social-network-backend-c8ew.onrender.com/socket';
+    const serverUrl = 'https://social-network-be.onrender.com/socket';
     const ws = new SockJS(serverUrl);
     this.stompClient = Stomp.over(ws);
   }
